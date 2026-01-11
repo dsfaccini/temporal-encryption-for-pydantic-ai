@@ -1,0 +1,45 @@
+[project]
+name = "temporal-encryption"
+version = "0.1.0"
+description = "Demo: Pydantic AI with Temporal using encrypted payloads"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "cryptography>=46.0.3",
+    "pydantic-ai-slim[google,vertexai,temporal]>=1.41.0",
+    "python-dotenv>=1.2.1",
+]
+
+[dependency-groups]
+dev = ["ruff", "pyright"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+extend-select = [
+    "Q",
+    "RUF100",
+    "C90",
+    "UP",
+    "I",
+]
+flake8-quotes = { inline-quotes = "single", multiline-quotes = "double" }
+mccabe = { max-complexity = 15 }
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["temporal_encryption"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.pyright]
+pythonVersion = "3.13"
+typeCheckingMode = "strict"
+reportMissingTypeStubs = false
+reportUnnecessaryIsInstance = false
+include = ["src"]
+venvPath = "."
+venv = ".venv"
